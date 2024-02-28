@@ -23,7 +23,7 @@ namespace App
                     CommandText = "uspAddCustomer"
                 };
 
-                var firstNameParameter = new SqlParameter("@Firstname", SqlDbType.VarChar, 50) { Value = customer.Firstname };
+                var firstNameParameter = new SqlParameter("@Firstname", SqlDbType.VarChar, 50) { Value = customer.FirstName };
                 command.Parameters.Add(firstNameParameter);
                 var surnameParameter = new SqlParameter("@Surname", SqlDbType.VarChar, 50) { Value = customer.Surname };
                 command.Parameters.Add(surnameParameter);
