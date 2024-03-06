@@ -8,6 +8,8 @@ namespace App
         private readonly ICompanyRepository _companyRepository;
         private readonly ICustomerCreditService _customerCreditService;
 
+
+
         public CustomerService(ICompanyRepository companyRepository, ICustomerCreditService customerCreditService)
         {
             _companyRepository = companyRepository;
@@ -59,10 +61,21 @@ namespace App
 
         private bool IsOldEnough(DateTime dateOfBirth)
         {
+            try
+            {
             var now = DateTime.Now;
             int age = now.Year - dateOfBirth.Year;
             if (now.Month < dateOfBirth.Month || (now.Month == dateOfBirth.Month && now.Day < dateOfBirth.Day)) age--;
             return age >= 21;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+
+
         }
 
         private void SetCreditLimit(Customer customer)
